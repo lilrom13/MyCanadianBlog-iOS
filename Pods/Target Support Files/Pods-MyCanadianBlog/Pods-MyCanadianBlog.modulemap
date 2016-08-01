@@ -1,0 +1,6 @@
+framework module Pods_MyCanadianBlog {
+  umbrella header "Pods-MyCanadianBlog-umbrella.h"
+
+  export *
+  module * { export * }
+}

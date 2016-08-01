@@ -1,0 +1,29 @@
+PODS:
+  - Alamofire (3.4.1)
+  - AlamofireJsonToObjects (1.6.0):
+    - Alamofire
+    - EVReflection
+  - AlamofireOauth2 (1.2.1):
+    - Alamofire
+    - KeychainAccess
+  - EVReflection (2.38.2)
+  - KeychainAccess (2.3.6)
+  - Material (1.42.7)
+
+DEPENDENCIES:
+  - Alamofire
+  - AlamofireJsonToObjects
+  - AlamofireOauth2
+  - Material (~> 1.0)
+
+SPEC CHECKSUMS:
+  Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
+  AlamofireJsonToObjects: e5155c1c58493c44d7ebe56bbb1aa65d95e82c68
+  AlamofireOauth2: 88546b39472af7ef7e8bccd7d0367db607462eef
+  EVReflection: 513bdc21d6b2c3e37668500f8098789cbe0d7eb9
+  KeychainAccess: 7f10e2ef998ddf954a64d5d608be08677774684d
+  Material: 2d46a44719b1f19e52956518af8aea54ac714963
+
+PODFILE CHECKSUM: 368fe960e095bfa86a324b13fcef8df6981161c3
+
+COCOAPODS: 1.0.1

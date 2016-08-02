@@ -50,6 +50,9 @@
                                                             <include reference="fVI-i9-SwR"/>
                                                         </mask>
                                                     </variation>
+                                                    <connections>
+                                                        <segue destination="Pq7-CD-0lB" kind="show" id="p0u-PK-I97"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Post date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6E0-WE-sAA">
                                                     <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -180,6 +183,23 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bTL-ws-Pzh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1012.5" y="445"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="s0J-7t-Gde">
+            <objects>
+                <viewController id="Pq7-CD-0lB" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ufS-th-sgl"/>
+                        <viewControllerLayoutGuide type="bottom" id="vyn-oa-O0n"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uwH-GK-jzd">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="siJ-mM-n6d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1906.5" y="733"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3Gp-sU-Ly4">

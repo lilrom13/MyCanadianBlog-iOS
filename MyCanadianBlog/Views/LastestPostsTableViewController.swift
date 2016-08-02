@@ -10,6 +10,7 @@ import UIKit
 import AlamofireOauth2
 
 class LastestPostsTableViewController: UITableViewController {
+    let TAG = "LASTESTPOSTS"
 
     let wordpressOauth2Settings = Oauth2Settings(
         baseURL: "https://public-api.wordpress.com/rest/v1.1",
@@ -27,8 +28,12 @@ class LastestPostsTableViewController: UITableViewController {
 
         let api = EVWordPressAPI(wordpressOauth2Settings: self.wordpressOauth2Settings, site: "romainmargheriti.com")
         api.posts([.number(19)]) { result in
-            self.posts = (result?.posts)!
-            self.tableView.reloadData()
+            if (result != nil) {
+                self.posts = (result?.posts)!
+                self.tableView.reloadData()
+            } else {
+                print("\(self.TAG) : an error occurred")
+            }
         }
     }
 

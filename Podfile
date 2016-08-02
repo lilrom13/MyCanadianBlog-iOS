@@ -10,5 +10,10 @@ target 'MyCanadianBlog' do
   pod 'AlamofireOauth2'
   pod 'Material', '~>1.0'
   pod 'AlamofireJsonToObjects'
+  
+  pod 'Fabric'
+  pod 'Crashlytics'
+  pod 'TwitterKit'
+  pod 'TwitterCore'
 
 end

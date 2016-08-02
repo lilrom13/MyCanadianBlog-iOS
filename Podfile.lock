@@ -6,24 +6,39 @@ PODS:
   - AlamofireOauth2 (1.2.1):
     - Alamofire
     - KeychainAccess
+  - Crashlytics (3.7.2):
+    - Fabric (~> 1.6.3)
   - EVReflection (2.38.2)
+  - Fabric (1.6.7)
   - KeychainAccess (2.3.6)
   - Material (1.42.7)
+  - TwitterCore (2.3.0):
+    - Fabric
+  - TwitterKit (2.3.0):
+    - TwitterCore (= 2.3.0)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireJsonToObjects
   - AlamofireOauth2
+  - Crashlytics
+  - Fabric
   - Material (~> 1.0)
+  - TwitterCore
+  - TwitterKit
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
   AlamofireJsonToObjects: e5155c1c58493c44d7ebe56bbb1aa65d95e82c68
   AlamofireOauth2: 88546b39472af7ef7e8bccd7d0367db607462eef
+  Crashlytics: 130ab943f8c78cda7a814b434f270b2e2c8a3cba
   EVReflection: 513bdc21d6b2c3e37668500f8098789cbe0d7eb9
+  Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   KeychainAccess: 7f10e2ef998ddf954a64d5d608be08677774684d
   Material: 2d46a44719b1f19e52956518af8aea54ac714963
+  TwitterCore: 817eae3e291fa4125b47789e26a4f6f024115c1f
+  TwitterKit: 8a383da8d9c21b0423716381ea8bbfce20622d91
 
-PODFILE CHECKSUM: 368fe960e095bfa86a324b13fcef8df6981161c3
+PODFILE CHECKSUM: e396ce00c71eb8849a9d62c2c1ed510b4ff4b477
 
 COCOAPODS: 1.0.1

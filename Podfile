@@ -15,5 +15,7 @@ target 'MyCanadianBlog' do
   pod 'Crashlytics'
   pod 'TwitterKit'
   pod 'TwitterCore'
+  
+  pod 'KYDrawerController'
 
 end

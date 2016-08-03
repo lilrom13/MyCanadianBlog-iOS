@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="yku-AG-ymS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Rvy-j5-hcR">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -11,12 +12,15 @@
             <objects>
                 <tableViewController id="vyi-Yc-5yf" customClass="LastestPostsTableViewController" customModule="MyCanadianBlog" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="190" sectionHeaderHeight="18" sectionFooterHeight="18" id="sOI-CR-rFn">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SimplePost" rowHeight="190" id="nVJ-yl-gha" customClass="SimplePost" customModule="MyCanadianBlog" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="114" width="600" height="190"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nVJ-yl-gha" id="x9V-8L-rfu">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="190"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vCM-sL-r25" customClass="MaterialPulseView" customModule="Material">
@@ -95,19 +99,19 @@
                                                     <exclude reference="Jyk-Cx-R9L"/>
                                                 </mask>
                                                 <mask key="constraints">
+                                                    <exclude reference="EIx-YB-DHT"/>
+                                                    <exclude reference="X68-7f-zo7"/>
+                                                    <exclude reference="cwA-cr-qeE"/>
+                                                    <exclude reference="dtk-fm-RUd"/>
+                                                    <exclude reference="xDW-qj-w3E"/>
+                                                    <exclude reference="SO0-0l-5lX"/>
+                                                    <exclude reference="og7-KI-Ny3"/>
                                                     <exclude reference="B2m-3N-arf"/>
                                                     <exclude reference="JmK-wt-9hZ"/>
                                                     <exclude reference="KlF-L5-JDU"/>
                                                     <exclude reference="3JI-eh-xlH"/>
                                                     <exclude reference="ga6-Mk-kqc"/>
                                                     <exclude reference="uLN-fv-dtc"/>
-                                                    <exclude reference="SO0-0l-5lX"/>
-                                                    <exclude reference="og7-KI-Ny3"/>
-                                                    <exclude reference="EIx-YB-DHT"/>
-                                                    <exclude reference="X68-7f-zo7"/>
-                                                    <exclude reference="cwA-cr-qeE"/>
-                                                    <exclude reference="dtk-fm-RUd"/>
-                                                    <exclude reference="xDW-qj-w3E"/>
                                                 </mask>
                                             </variation>
                                             <variation key="widthClass=compact">
@@ -118,19 +122,19 @@
                                                     <include reference="Jyk-Cx-R9L"/>
                                                 </mask>
                                                 <mask key="constraints">
+                                                    <include reference="EIx-YB-DHT"/>
+                                                    <include reference="X68-7f-zo7"/>
+                                                    <include reference="cwA-cr-qeE"/>
+                                                    <include reference="dtk-fm-RUd"/>
+                                                    <include reference="xDW-qj-w3E"/>
+                                                    <include reference="SO0-0l-5lX"/>
+                                                    <include reference="og7-KI-Ny3"/>
                                                     <include reference="B2m-3N-arf"/>
                                                     <include reference="JmK-wt-9hZ"/>
                                                     <include reference="KlF-L5-JDU"/>
                                                     <include reference="3JI-eh-xlH"/>
                                                     <include reference="ga6-Mk-kqc"/>
                                                     <include reference="uLN-fv-dtc"/>
-                                                    <include reference="SO0-0l-5lX"/>
-                                                    <include reference="og7-KI-Ny3"/>
-                                                    <include reference="EIx-YB-DHT"/>
-                                                    <include reference="X68-7f-zo7"/>
-                                                    <include reference="cwA-cr-qeE"/>
-                                                    <include reference="dtk-fm-RUd"/>
-                                                    <include reference="xDW-qj-w3E"/>
                                                 </mask>
                                             </variation>
                                         </view>
@@ -182,7 +186,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bTL-ws-Pzh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1012.5" y="445"/>
+            <point key="canvasLocation" x="1012.5" y="817"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="s0J-7t-Gde">
@@ -193,13 +197,14 @@
                         <viewControllerLayoutGuide type="bottom" id="vyn-oa-O0n"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="uwH-GK-jzd">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="siJ-mM-n6d" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1906.5" y="733"/>
+            <point key="canvasLocation" x="1885.5" y="817"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3Gp-sU-Ly4">
@@ -215,7 +220,63 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Nh-RJ-NBh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="82.5" y="445"/>
+            <point key="canvasLocation" x="67.5" y="817"/>
+        </scene>
+        <!--Drawer Controller-->
+        <scene sceneID="kyk-xE-XhR">
+            <objects>
+                <viewController id="Rvy-j5-hcR" customClass="KYDrawerController" customModule="KYDrawerController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8uf-BH-gIo"/>
+                        <viewControllerLayoutGuide type="bottom" id="TAF-Ck-ayv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="OTd-Ma-hi4">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="containerViewMaxAlpha">
+                            <real key="value" value="0.0"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="string" keyPath="mainSegueIdentifier" value="main"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="drawerWidth">
+                            <real key="value" value="320"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="string" keyPath="drawerSegueIdentifier" value="drawer"/>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <segue destination="ryd-g4-ZCL" kind="custom" identifier="drawer" customClass="KYEmbedDrawerControllerSegue" customModule="KYDrawerController" id="rjL-Ht-588"/>
+                        <segue destination="yku-AG-ymS" kind="custom" identifier="main" customClass="KYEmbedMainControllerSegue" customModule="KYDrawerController" id="tip-FR-2Qf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DmQ-vc-50J" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-919.5" y="439"/>
+        </scene>
+        <!--Table View Controller-->
+        <scene sceneID="ZDi-Eb-3jW">
+            <objects>
+                <tableViewController id="ryd-g4-ZCL" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="TAv-GR-5XT">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="bFk-1J-Taf">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bFk-1J-Taf" id="3lO-D4-iTq">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ryd-g4-ZCL" id="hPu-dz-yRf"/>
+                            <outlet property="delegate" destination="ryd-g4-ZCL" id="635-l1-uMA"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PVN-37-aar" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="67.5" y="56"/>
         </scene>
     </scenes>
     <resources>

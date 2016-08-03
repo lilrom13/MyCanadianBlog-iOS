@@ -57,6 +57,7 @@
 		7C5F320B1D4FA2BE00F159B5 /* EVWordpressParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVWordpressParameters.swift; sourceTree = "<group>"; };
 		7C5F320C1D4FA2BE00F159B5 /* WordPressRequestConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordPressRequestConvertible.swift; sourceTree = "<group>"; };
 		7C5F321C1D4FA38F00F159B5 /* Wordpress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Wordpress.swift; path = Constants/Wordpress.swift; sourceTree = "<group>"; };
+		7CA3190D1D5170D600386A88 /* MCB-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MCB-Bridging-Header.h"; sourceTree = "<group>"; };
 		B2E8304E5560FE2EB3CB2388 /* Pods-MyCanadianBlog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCanadianBlog.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyCanadianBlog/Pods-MyCanadianBlog.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,10 +97,11 @@
 				7C5F321B1D4FA37700F159B5 /* Constatns */,
 				7C5F31FE1D4FA2BE00F159B5 /* EVWordPressAPI */,
 				7C5F31F71D4F951B00F159B5 /* Views */,
+				7C5F31F51D4F93A800F159B5 /* Assets.xcassets */,
 				7C5F31E31D4F936800F159B5 /* AppDelegate.swift */,
+				7CA3190D1D5170D600386A88 /* MCB-Bridging-Header.h */,
 				7C5F31E71D4F936800F159B5 /* Main.storyboard */,
 				7C5F31EC1D4F936800F159B5 /* LaunchScreen.storyboard */,
-				7C5F31F51D4F93A800F159B5 /* Assets.xcassets */,
 				7C5F31EF1D4F936800F159B5 /* Info.plist */,
 			);
 			path = MyCanadianBlog;
@@ -432,6 +434,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = dev.romainmargheriti.com.MyCanadianBlog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyCanadianBlog/MCB-Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -444,6 +447,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = dev.romainmargheriti.com.MyCanadianBlog;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "MyCanadianBlog/MCB-Bridging-Header.h";
 			};
 			name = Release;
 		};

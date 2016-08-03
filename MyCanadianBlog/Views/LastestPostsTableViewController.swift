@@ -8,6 +8,7 @@
 
 import UIKit
 import AlamofireOauth2
+import MBProgressHUD
 
 class LastestPostsTableViewController: UITableViewController {
     let TAG = "LASTESTPOSTS"
@@ -21,12 +22,15 @@ class LastestPostsTableViewController: UITableViewController {
         clientSecret: Wordpress.clientSecret
     )
     
+    
     var posts: [Post] = [Post]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let api = EVWordPressAPI(wordpressOauth2Settings: self.wordpressOauth2Settings, site: "romainmargheriti.com")
+        let loadingNotification = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+        
         api.posts([.number(19)]) { result in
             if (result != nil) {
                 self.posts = (result?.posts)!
@@ -34,6 +38,7 @@ class LastestPostsTableViewController: UITableViewController {
             } else {
                 print("\(self.TAG) : an error occurred")
             }
+            MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
         }
     }
 

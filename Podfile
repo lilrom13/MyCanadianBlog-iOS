@@ -17,6 +17,5 @@ target 'MyCanadianBlog' do
   pod 'TwitterCore'
   
   pod 'KYDrawerController'
-  pod 'MBProgressHUD', '~> 1.0.0'
 
 end

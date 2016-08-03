@@ -8,7 +8,7 @@
 
 import UIKit
 import AlamofireOauth2
-import MBProgressHUD
+import KYDrawerController
 
 class LastestPostsTableViewController: UITableViewController {
     let TAG = "LASTESTPOSTS"
@@ -29,8 +29,6 @@ class LastestPostsTableViewController: UITableViewController {
         super.viewDidLoad()
 
         let api = EVWordPressAPI(wordpressOauth2Settings: self.wordpressOauth2Settings, site: "romainmargheriti.com")
-        let loadingNotification = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-        
         api.posts([.number(19)]) { result in
             if (result != nil) {
                 self.posts = (result?.posts)!
@@ -38,7 +36,6 @@ class LastestPostsTableViewController: UITableViewController {
             } else {
                 print("\(self.TAG) : an error occurred")
             }
-            MBProgressHUD.hideAllHUDsForView(self.view, animated: true)
         }
     }
 
@@ -112,4 +109,12 @@ class LastestPostsTableViewController: UITableViewController {
     }
     */
 
+    // MARK : MENU BAR ITEM 
+    
+    @IBAction func menuBarButtonItemClicked(sender: UIBarButtonItem) {
+        if let drawerController = navigationController?.parentViewController as? KYDrawerController {
+            drawerController.setDrawerState(.Opened, animated: true)
+        }
+    }
+    
 }

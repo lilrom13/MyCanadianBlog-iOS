@@ -28,6 +28,7 @@
 		7C5F32191D4FA2BE00F159B5 /* EVWordpressParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5F320B1D4FA2BE00F159B5 /* EVWordpressParameters.swift */; };
 		7C5F321A1D4FA2BE00F159B5 /* WordPressRequestConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5F320C1D4FA2BE00F159B5 /* WordPressRequestConvertible.swift */; };
 		7C5F321D1D4FA38F00F159B5 /* Wordpress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5F321C1D4FA38F00F159B5 /* Wordpress.swift */; };
+		7C79C5E91D52BD50001F175C /* TweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C79C5E81D52BD50001F175C /* TweetViewController.swift */; };
 		A540CBE7D14619EAA42BCD26 /* Pods_MyCanadianBlog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573ECD83A95167190778901F /* Pods_MyCanadianBlog.framework */; };
 /* End PBXBuildFile section */
 
@@ -57,6 +58,7 @@
 		7C5F320B1D4FA2BE00F159B5 /* EVWordpressParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVWordpressParameters.swift; sourceTree = "<group>"; };
 		7C5F320C1D4FA2BE00F159B5 /* WordPressRequestConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordPressRequestConvertible.swift; sourceTree = "<group>"; };
 		7C5F321C1D4FA38F00F159B5 /* Wordpress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Wordpress.swift; path = Constants/Wordpress.swift; sourceTree = "<group>"; };
+		7C79C5E81D52BD50001F175C /* TweetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TweetViewController.swift; path = Views/TweetViewController.swift; sourceTree = "<group>"; };
 		7CA3190D1D5170D600386A88 /* MCB-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MCB-Bridging-Header.h"; sourceTree = "<group>"; };
 		B2E8304E5560FE2EB3CB2388 /* Pods-MyCanadianBlog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCanadianBlog.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyCanadianBlog/Pods-MyCanadianBlog.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,6 +114,7 @@
 			children = (
 				7C5F31FC1D4F960200F159B5 /* SimplePost.swift */,
 				7C5F31FA1D4F95BD00F159B5 /* LastestPostsTableViewController.swift */,
+				7C79C5E81D52BD50001F175C /* TweetViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -316,6 +319,7 @@
 				7C5F32191D4FA2BE00F159B5 /* EVWordpressParameters.swift in Sources */,
 				7C5F321D1D4FA38F00F159B5 /* Wordpress.swift in Sources */,
 				7C5F31FD1D4F960200F159B5 /* SimplePost.swift in Sources */,
+				7C79C5E91D52BD50001F175C /* TweetViewController.swift in Sources */,
 				7C5F321A1D4FA2BE00F159B5 /* WordPressRequestConvertible.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

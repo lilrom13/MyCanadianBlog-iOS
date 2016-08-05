@@ -25,6 +25,7 @@ class SimplePost: UITableViewCell {
         preparePulseView()
         prepareLabels()
         prepareFlatButton()
+        prepareWebView()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -50,10 +51,18 @@ class SimplePost: UITableViewCell {
         self.readMoreBtn.titleLabel?.textColor = MaterialColor.deepOrange.base
     }
     
+    func prepareWebView() {
+        self.postContent.scrollView.scrollEnabled = false
+        self.postContent.opaque = false
+        self.postContent.backgroundColor = UIColor.clearColor();
+    }
+    
     func fillCell(post: Post) {
         self.post = post
         
-        self.postTitle.text = post.title
-        self.postDate.text = post.date
+        self.postTitle.text = self.post!.title
+        self.postDate.text = self.post!.date
+        
+        self.postContent.loadHTMLString(Constants.stylesheet + self.post!.content!.trunc(48, trailing: "..."), baseURL: Constants.PostContentStyle)
     }
 }

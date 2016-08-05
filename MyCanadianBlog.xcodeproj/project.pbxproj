@@ -28,7 +28,10 @@
 		7C5F32191D4FA2BE00F159B5 /* EVWordpressParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5F320B1D4FA2BE00F159B5 /* EVWordpressParameters.swift */; };
 		7C5F321A1D4FA2BE00F159B5 /* WordPressRequestConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5F320C1D4FA2BE00F159B5 /* WordPressRequestConvertible.swift */; };
 		7C5F321D1D4FA38F00F159B5 /* Wordpress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C5F321C1D4FA38F00F159B5 /* Wordpress.swift */; };
+		7C6F5CFF1D540B27006B32B7 /* PostContentStyle.css in Resources */ = {isa = PBXBuildFile; fileRef = 7C6F5CFE1D540B27006B32B7 /* PostContentStyle.css */; };
+		7C6F5D011D540C35006B32B7 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C6F5D001D540C35006B32B7 /* Constants.swift */; };
 		7C79C5E91D52BD50001F175C /* TweetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C79C5E81D52BD50001F175C /* TweetViewController.swift */; };
+		7C8772251D5412600057F5E8 /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8772241D5412600057F5E8 /* StringExtension.swift */; };
 		A540CBE7D14619EAA42BCD26 /* Pods_MyCanadianBlog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 573ECD83A95167190778901F /* Pods_MyCanadianBlog.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,7 +61,10 @@
 		7C5F320B1D4FA2BE00F159B5 /* EVWordpressParameters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EVWordpressParameters.swift; sourceTree = "<group>"; };
 		7C5F320C1D4FA2BE00F159B5 /* WordPressRequestConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordPressRequestConvertible.swift; sourceTree = "<group>"; };
 		7C5F321C1D4FA38F00F159B5 /* Wordpress.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Wordpress.swift; path = Constants/Wordpress.swift; sourceTree = "<group>"; };
+		7C6F5CFE1D540B27006B32B7 /* PostContentStyle.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; name = PostContentStyle.css; path = Ressources/css/PostContentStyle.css; sourceTree = "<group>"; };
+		7C6F5D001D540C35006B32B7 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		7C79C5E81D52BD50001F175C /* TweetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TweetViewController.swift; path = Views/TweetViewController.swift; sourceTree = "<group>"; };
+		7C8772241D5412600057F5E8 /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StringExtension.swift; path = Extensions/StringExtension.swift; sourceTree = "<group>"; };
 		7CA3190D1D5170D600386A88 /* MCB-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MCB-Bridging-Header.h"; sourceTree = "<group>"; };
 		B2E8304E5560FE2EB3CB2388 /* Pods-MyCanadianBlog.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyCanadianBlog.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MyCanadianBlog/Pods-MyCanadianBlog.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -96,6 +102,8 @@
 		7C5F31E21D4F936800F159B5 /* MyCanadianBlog */ = {
 			isa = PBXGroup;
 			children = (
+				7C8772231D5412230057F5E8 /* Extensions */,
+				7C6F5CF81D540A9C006B32B7 /* Ressources */,
 				7C5F321B1D4FA37700F159B5 /* Constatns */,
 				7C5F31FE1D4FA2BE00F159B5 /* EVWordPressAPI */,
 				7C5F31F71D4F951B00F159B5 /* Views */,
@@ -144,8 +152,33 @@
 			isa = PBXGroup;
 			children = (
 				7C5F321C1D4FA38F00F159B5 /* Wordpress.swift */,
+				7C6F5D001D540C35006B32B7 /* Constants.swift */,
 			);
 			name = Constatns;
+			sourceTree = "<group>";
+		};
+		7C6F5CF81D540A9C006B32B7 /* Ressources */ = {
+			isa = PBXGroup;
+			children = (
+				7C6F5CF91D540AAF006B32B7 /* css */,
+			);
+			name = Ressources;
+			sourceTree = "<group>";
+		};
+		7C6F5CF91D540AAF006B32B7 /* css */ = {
+			isa = PBXGroup;
+			children = (
+				7C6F5CFE1D540B27006B32B7 /* PostContentStyle.css */,
+			);
+			name = css;
+			sourceTree = "<group>";
+		};
+		7C8772231D5412230057F5E8 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7C8772241D5412600057F5E8 /* StringExtension.swift */,
+			);
+			name = Extensions;
 			sourceTree = "<group>";
 		};
 		9162EA8BD87BE80F5A674C96 /* Pods */ = {
@@ -229,6 +262,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7C5F31EE1D4F936800F159B5 /* LaunchScreen.storyboard in Resources */,
+				7C6F5CFF1D540B27006B32B7 /* PostContentStyle.css in Resources */,
 				7C5F31F61D4F93A800F159B5 /* Assets.xcassets in Resources */,
 				7C5F31E91D4F936800F159B5 /* Main.storyboard in Resources */,
 			);
@@ -310,6 +344,7 @@
 				7C5F320F1D4FA2BE00F159B5 /* EVWordPressAPI_Follow.swift in Sources */,
 				7C5F32141D4FA2BE00F159B5 /* EVWordPressAPI_Sites.swift in Sources */,
 				7C5F32181D4FA2BE00F159B5 /* EVWordpressData.swift in Sources */,
+				7C8772251D5412600057F5E8 /* StringExtension.swift in Sources */,
 				7C5F320D1D4FA2BE00F159B5 /* EVWordPressAPI.swift in Sources */,
 				7C5F31FB1D4F95BD00F159B5 /* LastestPostsTableViewController.swift in Sources */,
 				7C5F32111D4FA2BE00F159B5 /* EVWordPressAPI_Insights.swift in Sources */,
@@ -317,6 +352,7 @@
 				7C5F32131D4FA2BE00F159B5 /* EVWordPressAPI_Reader.swift in Sources */,
 				7C5F32171D4FA2BE00F159B5 /* EVWordPressAPI_Users.swift in Sources */,
 				7C5F32191D4FA2BE00F159B5 /* EVWordpressParameters.swift in Sources */,
+				7C6F5D011D540C35006B32B7 /* Constants.swift in Sources */,
 				7C5F321D1D4FA38F00F159B5 /* Wordpress.swift in Sources */,
 				7C5F31FD1D4F960200F159B5 /* SimplePost.swift in Sources */,
 				7C79C5E91D52BD50001F175C /* TweetViewController.swift in Sources */,

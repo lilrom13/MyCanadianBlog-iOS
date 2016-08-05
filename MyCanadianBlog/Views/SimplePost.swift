@@ -63,6 +63,6 @@ class SimplePost: UITableViewCell {
         self.postTitle.text = self.post!.title
         self.postDate.text = self.post!.date
         
-        self.postContent.loadHTMLString(Constants.stylesheet + self.post!.content!.trunc(48, trailing: "..."), baseURL: Constants.PostContentStyle)
+        self.postContent.loadHTMLString(Constants.stylesheet + self.post!.content!.trunc(48, trailing: "...")W, baseURL: Constants.PostContentStyle)
     }
 }

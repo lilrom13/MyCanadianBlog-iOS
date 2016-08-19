@@ -12,4 +12,5 @@ import Foundation
 class Constants {
     static let stylesheet = "<link rel=\"stylesheet\" href=\"PostContentStyle.css\" type=\"text/css\">"
     static let PostContentStyle = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("PostContentStyle.css", ofType: nil)!)
+    static let PostContentCellStyle = NSURL.fileURLWithPath(NSBundle.mainBundle().pathForResource("PostContentCellStyle.css", ofType: nil)!)
 }

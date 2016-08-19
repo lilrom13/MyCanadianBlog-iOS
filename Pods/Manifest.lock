@@ -1,19 +1,30 @@
 PODS:
   - Alamofire (3.4.1)
+  - AlamofireImage (2.4.1):
+    - Alamofire (~> 3.3)
   - AlamofireJsonToObjects (1.6.0):
     - Alamofire
     - EVReflection
   - AlamofireOauth2 (1.2.1):
     - Alamofire
     - KeychainAccess
+  - Bolts (1.8.4):
+    - Bolts/AppLinks (= 1.8.4)
+    - Bolts/Tasks (= 1.8.4)
+  - Bolts/AppLinks (1.8.4):
+    - Bolts/Tasks
+  - Bolts/Tasks (1.8.4)
   - Crashlytics (3.7.2):
     - Fabric (~> 1.6.3)
   - EVReflection (2.38.2)
   - Fabric (1.6.7)
+  - FBSDKCoreKit (4.14.0):
+    - Bolts (~> 1.7)
+  - FBSDKShareKit (4.14.0):
+    - FBSDKCoreKit
   - KeychainAccess (2.3.6)
   - KYDrawerController (1.1.5)
   - Material (1.42.7)
-  - MBProgressHUD (1.0.0)
   - TwitterCore (2.3.0):
     - Fabric
   - TwitterKit (2.3.0):
@@ -21,30 +32,35 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - AlamofireImage (~> 2.0)
   - AlamofireJsonToObjects
   - AlamofireOauth2
   - Crashlytics
   - Fabric
+  - FBSDKCoreKit
+  - FBSDKShareKit
   - KYDrawerController
   - Material (~> 1.0)
-  - MBProgressHUD (~> 1.0.0)
   - TwitterCore
   - TwitterKit
 
 SPEC CHECKSUMS:
   Alamofire: 01a82e2f6c0f860ade35534c8dd88be61bdef40c
+  AlamofireImage: 3ccf3347d9ea24580dc11fb892770a0be6a29826
   AlamofireJsonToObjects: e5155c1c58493c44d7ebe56bbb1aa65d95e82c68
   AlamofireOauth2: 88546b39472af7ef7e8bccd7d0367db607462eef
+  Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   Crashlytics: 130ab943f8c78cda7a814b434f270b2e2c8a3cba
   EVReflection: 513bdc21d6b2c3e37668500f8098789cbe0d7eb9
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
+  FBSDKCoreKit: 6e020b5db0b5bd1e01f5fb0902131befd129a502
+  FBSDKShareKit: e8e5d4ccef69b41132fe33acda26db1e33143e33
   KeychainAccess: 7f10e2ef998ddf954a64d5d608be08677774684d
   KYDrawerController: 98eb8f8c53164de1098b3ca5c6789f3d8aa86c3e
   Material: 2d46a44719b1f19e52956518af8aea54ac714963
-  MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   TwitterCore: 817eae3e291fa4125b47789e26a4f6f024115c1f
   TwitterKit: 8a383da8d9c21b0423716381ea8bbfce20622d91
 
-PODFILE CHECKSUM: e42f0f3091d3c790d56f4eb5229fabf51d40b2a6
+PODFILE CHECKSUM: 1669b198f8a7de61e0f87d16d77f0c2b34782c50
 
 COCOAPODS: 1.0.1

@@ -9,6 +9,4 @@
 #ifndef MCB_Bridging_Header_h
 #define MCB_Bridging_Header_h
 
-
-
 #endif /* MCB_Bridging_Header_h */

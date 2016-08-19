@@ -10,6 +10,7 @@ target 'MyCanadianBlog' do
   pod 'AlamofireOauth2'
   pod 'Material', '~>1.0'
   pod 'AlamofireJsonToObjects'
+  pod 'AlamofireImage', '~> 2.0'
   
   pod 'Fabric'
   pod 'Crashlytics'
@@ -17,5 +18,8 @@ target 'MyCanadianBlog' do
   pod 'TwitterCore'
   
   pod 'KYDrawerController'
+  
+  pod 'FBSDKCoreKit'
+  pod 'FBSDKShareKit'
 
 end

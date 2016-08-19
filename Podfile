@@ -17,8 +17,6 @@ target 'MyCanadianBlog' do
   pod 'TwitterKit'
   pod 'TwitterCore'
   
-  pod 'KYDrawerController'
-  
   pod 'FBSDKCoreKit'
   pod 'FBSDKShareKit'
 

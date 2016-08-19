@@ -4,6 +4,7 @@
 
 ## constants
 MyCanadianBlog/Constants/Wordpress.swift
+MyCanadianBlog/Constants/Twitter.swift
 
 ## Build generated
 build/

@@ -12,6 +12,8 @@ import KYDrawerController
 
 class LastestPostsTableViewController: UITableViewController {
     let TAG = "LASTESTPOSTS"
+    
+    let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
 
     let wordpressOauth2Settings = Oauth2Settings(
         baseURL: "https://public-api.wordpress.com/rest/v1.1",
@@ -29,6 +31,7 @@ class LastestPostsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        print("navigation Controller = \(self.navigationController)")
         let api = EVWordPressAPI(wordpressOauth2Settings: self.wordpressOauth2Settings, site: "romainmargheriti.com")
         api.posts([.number(19)]) { result in
             if (result != nil) {
@@ -79,16 +82,4 @@ class LastestPostsTableViewController: UITableViewController {
             postVC.post = self.posts[self.selectedCell]
         }
     }
-
-    // MARK : MENU BAR ITEM 
-    
-    @IBAction func menuBarButtonItemClicked(sender: UIBarButtonItem) {
-        if let drawerController = navigationController?.parentViewController as? KYDrawerController {
-            drawerController.setDrawerState(.Opened, animated: true)
-        }
-    }
-    
-    @IBAction func readMoreBtnCkicked(sender: AnyObject) {
-    }
-    
 }

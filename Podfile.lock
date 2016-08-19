@@ -23,7 +23,6 @@ PODS:
   - FBSDKShareKit (4.14.0):
     - FBSDKCoreKit
   - KeychainAccess (2.3.6)
-  - KYDrawerController (1.1.5)
   - Material (1.42.7)
   - TwitterCore (2.3.0):
     - Fabric
@@ -39,7 +38,6 @@ DEPENDENCIES:
   - Fabric
   - FBSDKCoreKit
   - FBSDKShareKit
-  - KYDrawerController
   - Material (~> 1.0)
   - TwitterCore
   - TwitterKit
@@ -56,11 +54,10 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 6e020b5db0b5bd1e01f5fb0902131befd129a502
   FBSDKShareKit: e8e5d4ccef69b41132fe33acda26db1e33143e33
   KeychainAccess: 7f10e2ef998ddf954a64d5d608be08677774684d
-  KYDrawerController: 98eb8f8c53164de1098b3ca5c6789f3d8aa86c3e
   Material: 2d46a44719b1f19e52956518af8aea54ac714963
   TwitterCore: 817eae3e291fa4125b47789e26a4f6f024115c1f
   TwitterKit: 8a383da8d9c21b0423716381ea8bbfce20622d91
 
-PODFILE CHECKSUM: 1669b198f8a7de61e0f87d16d77f0c2b34782c50
+PODFILE CHECKSUM: 9597302bbe4a0d09436e88fa74b78b97df94acce
 
 COCOAPODS: 1.0.1

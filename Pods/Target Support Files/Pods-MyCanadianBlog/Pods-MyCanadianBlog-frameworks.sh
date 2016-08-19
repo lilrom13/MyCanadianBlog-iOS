@@ -92,7 +92,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/EVReflection/EVReflection.framework"
   install_framework "$BUILT_PRODUCTS_DIR/FBSDKCoreKit/FBSDKCoreKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/FBSDKShareKit/FBSDKShareKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/KYDrawerController/KYDrawerController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/KeychainAccess/KeychainAccess.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Material/Material.framework"
 fi
@@ -105,7 +104,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/EVReflection/EVReflection.framework"
   install_framework "$BUILT_PRODUCTS_DIR/FBSDKCoreKit/FBSDKCoreKit.framework"
   install_framework "$BUILT_PRODUCTS_DIR/FBSDKShareKit/FBSDKShareKit.framework"
-  install_framework "$BUILT_PRODUCTS_DIR/KYDrawerController/KYDrawerController.framework"
   install_framework "$BUILT_PRODUCTS_DIR/KeychainAccess/KeychainAccess.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Material/Material.framework"
 fi

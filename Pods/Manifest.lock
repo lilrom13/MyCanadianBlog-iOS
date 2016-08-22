@@ -14,7 +14,7 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
-  - Crashlytics (3.7.2):
+  - Crashlytics (3.7.3):
     - Fabric (~> 1.6.3)
   - EVReflection (2.38.2)
   - Fabric (1.6.7)
@@ -24,6 +24,7 @@ PODS:
     - FBSDKCoreKit
   - KeychainAccess (2.3.6)
   - Material (1.42.7)
+  - OAuthSwift (0.5.2)
   - TwitterCore (2.3.0):
     - Fabric
   - TwitterKit (2.3.0):
@@ -39,6 +40,7 @@ DEPENDENCIES:
   - FBSDKCoreKit
   - FBSDKShareKit
   - Material (~> 1.0)
+  - OAuthSwift (~> 0.5.0)
   - TwitterCore
   - TwitterKit
 
@@ -48,16 +50,17 @@ SPEC CHECKSUMS:
   AlamofireJsonToObjects: e5155c1c58493c44d7ebe56bbb1aa65d95e82c68
   AlamofireOauth2: 88546b39472af7ef7e8bccd7d0367db607462eef
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
-  Crashlytics: 130ab943f8c78cda7a814b434f270b2e2c8a3cba
+  Crashlytics: 76f6beaff70acf226139582c09c78461597c2b98
   EVReflection: 513bdc21d6b2c3e37668500f8098789cbe0d7eb9
   Fabric: caf7580c725e64db144f610ac65cd60956911dc7
   FBSDKCoreKit: 6e020b5db0b5bd1e01f5fb0902131befd129a502
   FBSDKShareKit: e8e5d4ccef69b41132fe33acda26db1e33143e33
   KeychainAccess: 7f10e2ef998ddf954a64d5d608be08677774684d
   Material: 2d46a44719b1f19e52956518af8aea54ac714963
+  OAuthSwift: 1ef042d4362e755e24a78f158d817245641a5d24
   TwitterCore: 817eae3e291fa4125b47789e26a4f6f024115c1f
   TwitterKit: 8a383da8d9c21b0423716381ea8bbfce20622d91
 
-PODFILE CHECKSUM: 9597302bbe4a0d09436e88fa74b78b97df94acce
+PODFILE CHECKSUM: d4f1c501351415b4d6b73d73072e6da9573c4aa1
 
 COCOAPODS: 1.0.1

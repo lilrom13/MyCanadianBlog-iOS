@@ -19,5 +19,7 @@ target 'MyCanadianBlog' do
   
   pod 'FBSDKCoreKit'
   pod 'FBSDKShareKit'
+  
+  pod 'OAuthSwift', '~> 0.5.0'
 
 end

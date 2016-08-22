@@ -8,7 +8,6 @@
 
 import UIKit
 import AlamofireOauth2
-import KYDrawerController
 
 class LastestPostsTableViewController: UITableViewController {
     let TAG = "LASTESTPOSTS"
@@ -27,11 +26,14 @@ class LastestPostsTableViewController: UITableViewController {
     var posts: [Post] = [Post]()
     
     var selectedCell: Int = 0
+    var imageFeatured = UIImage(named: "DrawerBackground")
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        print("navigation Controller = \(self.navigationController)")
+        
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(featuredImageLoadded),name: "featuredImageLoadded", object: nil)
+        
         let api = EVWordPressAPI(wordpressOauth2Settings: self.wordpressOauth2Settings, site: "romainmargheriti.com")
         api.posts([.number(19)]) { result in
             if (result != nil) {
@@ -69,6 +71,7 @@ class LastestPostsTableViewController: UITableViewController {
     override func tableView(tableView: UITableView,
                    didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.selectedCell = indexPath.section
+        performSegueWithIdentifier("showPost", sender: nil)
     }
 
 
@@ -76,10 +79,22 @@ class LastestPostsTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if (segue.identifier == "OpenPost") {
+        if (segue.identifier == "showPost") {
             let postVC = segue.destinationViewController as! PostViewController
             
             postVC.post = self.posts[self.selectedCell]
+            if let image = imageFeatured {
+                postVC.featuredImage = image
+            }
+        }
+    }
+    
+    // MARK : Callbacks
+    func featuredImageLoadded(notification: NSNotification) {
+        if let infos = notification.userInfo as? Dictionary<String,AnyObject> {
+            if let image = infos["image"] as? UIImage {
+                self.imageFeatured = image
+            }
         }
     }
 }

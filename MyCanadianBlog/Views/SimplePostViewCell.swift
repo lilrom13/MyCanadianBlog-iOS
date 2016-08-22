@@ -58,13 +58,14 @@ class SimplePostViewCell: UITableViewCell {
         self.postTitle.text = self.post!.title
         self.postDate.text = self.post!.date
         
-        self.postContent.loadHTMLString(Constants.stylesheet + self.post!.content!.trunc(48, trailing: "..."), baseURL: Constants.PostContentCellStyle)
+        self.postContent.loadHTMLString(Constants.stylesheetCell + self.post!.content!.trunc(48, trailing: "..."), baseURL: Constants.PostContentCellStyle)
         
         if (self.post?.featured_image!.URLString != "") {
             Alamofire.request(.GET, (self.post!.featured_image?.URLString)!)
                 .responseImage { response in
                     if let image = response.result.value {
                         self.pulseView.image = image
+                        NSNotificationCenter.defaultCenter().postNotificationName("featuredImageLoadded", object: nil, userInfo: ["image":image])
                     }
             }
         }

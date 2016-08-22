@@ -11,7 +11,7 @@ import Fabric
 import Crashlytics
 import TwitterKit
 import Material
-import KYDrawerController
+import OAuthSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,6 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Fabric.with([Crashlytics.self, Twitter.self])
         UINavigationBar.appearance().tintColor = MaterialColor.deepOrange.base
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : MaterialColor.deepOrange.base]
+        return true
+    }
+    
+    func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
+        if (url.host == "oauth-callback") {
+            OAuthSwift.handleOpenURL(url)
+        }
         return true
     }
 

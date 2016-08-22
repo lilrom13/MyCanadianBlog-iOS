@@ -8,7 +8,6 @@
 
 import UIKit
 import TwitterKit
-import KYDrawerController
 
 class TweetsTableViewController: TWTRTimelineViewController {
     

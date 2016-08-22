@@ -1,5 +1,4 @@
-p {
-    font-family: "Roboto", Roboto-Italic;
-    font-size: 25px;
+* {
+    font-family: "Roboto", Roboto;
     color: black;
 }

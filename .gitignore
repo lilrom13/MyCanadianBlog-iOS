@@ -5,7 +5,7 @@
 ## constants
 MyCanadianBlog/Constants/Wordpress.swift
 MyCanadianBlog/Constants/Twitter.swift
-
+MyCanadianBlog/Constatns/Flickr.swift
 ## Build generated
 build/
 DerivedData/

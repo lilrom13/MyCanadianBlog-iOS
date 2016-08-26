@@ -7,89 +7,87 @@
 //
 
 import UIKit
+import Material
+import DGElasticPullToRefresh
 
-class CommentsTableViewController: UITableViewController {
+class CommentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    private let TAG = "CommentsTableViewController"
+    
+    var postId: Int? = nil
+    var comments: [Comment] = [Comment]()
+    var color: UIColor?
+
+    @IBOutlet weak var tableView: UITableView!
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.navigationBar.barTintColor = Constants.mainColor
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        self.tabBarController?.tabBar.hidden = true
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        loadingView.tintColor = UIColor.whiteColor()
+        tableView.dg_addPullToRefreshWithActionHandler({ () -> Void in
+            self.tableView.dg_stopLoading()
+        }, loadingView: loadingView)
+        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
+        
+        if let color = self.color {
+            self.navigationController?.navigationBar.barTintColor = color
+            tableView.dg_setPullToRefreshFillColor(color)
+        } else {
+            tableView.dg_setPullToRefreshFillColor(Constants.mainColor)
+        }
+        
+        tableView.estimatedRowHeight = 115
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        let api = EVWordPressAPI(wordpressOauth2Settings: Wordpress.wordpressOauth2Settings, site: Wordpress.siteName)
+        api.replies(String(postId!), parameters: [.number(19)]) { result in
+            if (result != nil) {
+                self.comments = result!.comments!
+                self.comments = self.comments.reverse()
+                self.tableView.reloadData()
+            } else {
+                print("\(self.TAG) : an error occurred")
+            }
+        }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return comments.count
     }
 
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
 
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("CommentCell", forIndexPath: indexPath) as! CommentTableViewCell
 
-        // Configure the cell...
+        cell.fill(self.comments[indexPath.section])
 
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    func tableView(tableView: UITableView,  heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.00001
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    
+    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0.00001
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
+    
+    @IBAction func addCommentBtnClicked(sender: AnyObject) {
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

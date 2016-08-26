@@ -21,5 +21,9 @@ target 'MyCanadianBlog' do
   pod 'FBSDKShareKit'
   
   pod 'OAuthSwift', '~> 0.5.0'
+  
+  pod 'StringExtensionHTML', '~> 0.1'
+  
+  pod 'DGElasticPullToRefresh', '~> 1.0'
 
 end

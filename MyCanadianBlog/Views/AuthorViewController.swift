@@ -14,9 +14,10 @@ class AuthorViewController: UIViewController, MKMapViewDelegate {
 
     var author: Author?
     
+    var color: UIColor?
     @IBOutlet weak var authorImage: UIImageView!
     @IBOutlet weak var authorName: UILabel!
-    @IBOutlet weak var authorDescription: UITextView!
+    @IBOutlet weak var authorDescription: UILabel!
     @IBOutlet weak var authorLocation: MKMapView!
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -28,10 +29,16 @@ class AuthorViewController: UIViewController, MKMapViewDelegate {
     
     override func viewWillDisappear(animated: Bool) {
         self.tabBarController?.tabBar.hidden = false
+        self.navigationController?.navigationBar.barTintColor = Constants.mainColor
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.navigationController?.navigationBar.barTintColor = self.color
+        self.view.backgroundColor = self.color
+        self.authorDescription.backgroundColor = self.color
+        self.authorName.textColor = UIColor.whiteColor()
         
         self.authorLocation.delegate = self
         
@@ -51,7 +58,7 @@ class AuthorViewController: UIViewController, MKMapViewDelegate {
                     
                     print(response)
                     
-                    self.authorDescription.text = response.valueForKey("aboutMe") as! String
+                    self.authorDescription.text = response.valueForKey("aboutMe") as? String
                     
                     let address = response.valueForKey("currentLocation") as! String
                     let geocoder = CLGeocoder()
@@ -73,18 +80,5 @@ class AuthorViewController: UIViewController, MKMapViewDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
-    
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -17,12 +17,25 @@ import OAuthSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var storyboard: UIStoryboard?
+    var rootViewController: UIViewController?
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        let notificationTypes: UIUserNotificationType = [UIUserNotificationType.Alert, UIUserNotificationType.Badge, UIUserNotificationType.Sound]
+        let pushNotificationSettings = UIUserNotificationSettings(forTypes: notificationTypes, categories: nil)
+        
+        self.storyboard = UIStoryboard(name: "Main", bundle: nil)
+        self.rootViewController = self.window?.rootViewController
+        
         Fabric.sharedSDK().debug = true
         Fabric.with([Crashlytics.self, Twitter.self])
-        UINavigationBar.appearance().tintColor = MaterialColor.deepOrange.base
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : MaterialColor.deepOrange.base]
+        
+        application.registerUserNotificationSettings(pushNotificationSettings)
+        application.registerForRemoteNotifications()
+        
+        if let options = launchOptions {
+            print(options)
+        }
         return true
     }
     
@@ -54,7 +67,38 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
-
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        print("DEVICE TOKEN = \(deviceToken)")
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        print(error)
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+        if let postId = userInfo["postId"] as? String {
+            print(postId)
+            
+            let api = EVWordPressAPI(wordpressOauth2Settings: Wordpress.wordpressOauth2Settings, site: Wordpress.siteName)
+            
+            api.postById(postId) { post in
+                if (post != nil) {
+                    for child in (self.rootViewController?.childViewControllers)! {
+                        if child.restorationIdentifier == "LastestPostsNavigationController"{
+                            let lastestPostsTableViewController = (child.childViewControllers[0]) as! LastestPostsTableViewController
+                            let simplePostVC = (self.storyboard?.instantiateViewControllerWithIdentifier("PostViewController"))! as! PostViewController
+                            
+                            simplePostVC.post = post
+                            lastestPostsTableViewController.navigationController?.pushViewController(simplePostVC, animated: true)
+                        }
+                    }
+                } else {
+                    print("An error occurred")
+                }
+            }
+            
+        }
+    }
 }
 

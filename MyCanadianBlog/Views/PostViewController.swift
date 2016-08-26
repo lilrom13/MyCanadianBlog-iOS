@@ -10,13 +10,15 @@ import UIKit
 import Material
 
 class PostViewController: UIViewController, UIScrollViewDelegate {
-
+    private let TAG = "PostViewController"
+    
     private var lastContentOffset: CGFloat = 0
     private var initialHeight: CGFloat = 0
     
     var post: Post? = nil
     
-    var featuredImage: UIImage? = nil
+    var featuredImage: UIImage?
+    var color: UIColor?
     
     @IBOutlet weak var header: UIView!
     @IBOutlet weak var closeBtn: FabButton!
@@ -26,7 +28,6 @@ class PostViewController: UIViewController, UIScrollViewDelegate {
     @IBOutlet weak var authorButton: UIButton!
     @IBOutlet weak var postContentWebView: UIWebView!
     @IBOutlet weak var commentsBtn: FlatButton!
-
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
@@ -48,14 +49,16 @@ class PostViewController: UIViewController, UIScrollViewDelegate {
         
         if (self.featuredImage != nil) {
             self.header.backgroundColor = UIColor(patternImage: self.featuredImage!)
+            self.closeBtn.tintColor = MaterialColor.deepOrange.base
         } else {
-            
+            self.header.backgroundColor = self.color!
         }
+        self.commentsBtn.backgroundColor = self.color
+        self.closeBtn.tintColor = self.color!
         
         let img: UIImage? = MaterialIcon.cm.close
         self.closeBtn.setImage(img, forState: .Normal)
         self.closeBtn.setImage(img, forState: .Highlighted)
-        self.closeBtn.tintColor = MaterialColor.deepOrange.base
         self.closeBtn.backgroundColor = UIColor.whiteColor()
         self.closeBtn.alpha = 0.5
         
@@ -81,8 +84,6 @@ class PostViewController: UIViewController, UIScrollViewDelegate {
         content.contentDescription = self.post!.title
         
         facebookShare.shareContent = content*/
-        
-        self.postContentWebView.loadHTMLString(Constants.stylesheet + self.post!.content!, baseURL: Constants.PostContentStyle)
     }
 
     override func didReceiveMemoryWarning() {
@@ -108,15 +109,12 @@ class PostViewController: UIViewController, UIScrollViewDelegate {
                     }
                 }
             } else if (self.lastContentOffset < scrollView.contentOffset.y && lastContentOffset > 0) {
-                if (self.height.constant >= self.initialHeight) {
-                    var value = scrollView.contentOffset.y - self.lastContentOffset
-                    
-                    if ((self.height.constant - value) > self.initialHeight) {
-                        self.height.constant -= value
-                    } else {
-                        
-                    }
+                let value = scrollView.contentOffset.y - self.lastContentOffset
+                
+                if (self.height.constant - value >= self.initialHeight) {
+                    self.height.constant -= value
                 }
+
             }
             self.lastContentOffset = scrollView.contentOffset.y
         }
@@ -124,6 +122,7 @@ class PostViewController: UIViewController, UIScrollViewDelegate {
 
     //closeBtn Clicked
     @IBAction func closeBtnClicked(sender: AnyObject) {
+        //if (self.post!.comment_count != 0)
         self.navigationController?.popViewControllerAnimated(true)
     }
     
@@ -135,6 +134,12 @@ class PostViewController: UIViewController, UIScrollViewDelegate {
             let authorVC = segue.destinationViewController as! AuthorViewController
             
             authorVC.author = self.post!.author
+            authorVC.color = self.color
+        } else if (segue.identifier == "showComments") {
+            let commentsVC = segue.destinationViewController as! CommentsTableViewController
+            
+            commentsVC.postId = self.post!.ID
+            commentsVC.color = self.color!
         }
 
     }

@@ -8,41 +8,33 @@
 
 import UIKit
 import AlamofireOauth2
+import DGElasticPullToRefresh
 
 class LastestPostsTableViewController: UITableViewController {
     let TAG = "LASTESTPOSTS"
     
     let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-
-    let wordpressOauth2Settings = Oauth2Settings(
-        baseURL: "https://public-api.wordpress.com/rest/v1.1",
-        authorizeURL: "https://public-api.wordpress.com/oauth2/authorize",
-        tokenURL: "https://public-api.wordpress.com/oauth2/token",
-        redirectURL: "alamofireoauth2://wordpress/oauth_callback",
-        clientID: Wordpress.ClientId,
-        clientSecret: Wordpress.clientSecret
-    )
     
     var posts: [Post] = [Post]()
     
-    var selectedCell: Int = 0
-    var imageFeatured = UIImage(named: "DrawerBackground")
+    var lastSelectedCell: SelectedCell?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LastestPostsTableViewController.getPostsSucceed(_:)), name: "getPostsSucceed", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LastestPostsTableViewController.getPostsFailed(_:)), name: "getPostsFailed", object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(featuredImageLoadded),name: "featuredImageLoadded", object: nil)
+        PostsWebservice.getPosts(false)
         
-        let api = EVWordPressAPI(wordpressOauth2Settings: self.wordpressOauth2Settings, site: "romainmargheriti.com")
-        api.posts([.number(19)]) { result in
-            if (result != nil) {
-                self.posts = (result?.posts)!
-                self.tableView.reloadData()
-            } else {
-                print("\(self.TAG) : an error occurred")
-            }
-        }
+        let loadingView = DGElasticPullToRefreshLoadingViewCircle()
+        loadingView.tintColor = UIColor.whiteColor()
+        tableView.dg_addPullToRefreshWithActionHandler({ () -> Void in
+            self.tableView.allowsSelection = false
+            PostsWebservice.getPosts(true)
+        }, loadingView: loadingView)
+        tableView.dg_setPullToRefreshFillColor(Constants.mainColor)
+        tableView.dg_setPullToRefreshBackgroundColor(tableView.backgroundColor!)
     }
 
     override func didReceiveMemoryWarning() {
@@ -61,20 +53,42 @@ class LastestPostsTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("SimplePost", forIndexPath: indexPath) as! SimplePostViewCell
-
-        cell.fillCell(self.posts[indexPath.section])
-
-        return cell
+        if (self.posts[indexPath.section].featured_image != "") {
+            let cell = tableView.dequeueReusableCellWithIdentifier("SimplePostWithPhotoCell", forIndexPath: indexPath) as! SimplePostWithPhotoCell
+            cell.fillCell(self.posts[indexPath.section])
+            return cell
+        } else {
+            let cell = tableView.dequeueReusableCellWithIdentifier("SimplePostCell", forIndexPath: indexPath) as! SimplePostCell
+            cell.fillCell(self.posts[indexPath.section])
+            return cell
+        }
     }
 
-    override func tableView(tableView: UITableView,
-                   didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.selectedCell = indexPath.section
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        var cell: UITableViewCell
+        var image: UIImage? = nil
+        var color: UIColor
+        
+        if (self.tableView.cellForRowAtIndexPath(indexPath)?.reuseIdentifier == "SimplePostWithPhotoCell") {
+            cell = self.tableView.cellForRowAtIndexPath(indexPath) as! SimplePostWithPhotoCell
+            image = (cell as! SimplePostWithPhotoCell).pulseView.image
+            color = (cell as! SimplePostWithPhotoCell).color
+        } else {
+            cell = self.tableView.cellForRowAtIndexPath(indexPath) as! SimplePostCell
+            color = (cell as! SimplePostCell).color
+        }
+        self.lastSelectedCell = SelectedCell(cell: cell, section: indexPath.section, color: color, featuredImage: image)
         performSegueWithIdentifier("showPost", sender: nil)
     }
-
-
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if (self.posts[indexPath.section].featured_image != "") {
+            return 250.0
+        } else {
+            return 153.0
+        }
+    }
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -82,18 +96,47 @@ class LastestPostsTableViewController: UITableViewController {
         if (segue.identifier == "showPost") {
             let postVC = segue.destinationViewController as! PostViewController
             
-            postVC.post = self.posts[self.selectedCell]
-            if let image = imageFeatured {
-                postVC.featuredImage = image
+            if let post = sender as? Post {
+               postVC.post = post
+            } else {
+                postVC.post = self.posts[self.lastSelectedCell!._section]
+                
+                if (self.lastSelectedCell?._cell is SimplePostWithPhotoCell) {
+                    postVC.featuredImage = self.lastSelectedCell!._featuredImage!
+                }
+                postVC.color = self.lastSelectedCell!._color
             }
         }
     }
     
-    // MARK : Callbacks
-    func featuredImageLoadded(notification: NSNotification) {
-        if let infos = notification.userInfo as? Dictionary<String,AnyObject> {
-            if let image = infos["image"] as? UIImage {
-                self.imageFeatured = image
+    // MARK : CallBacks
+    
+    func getPostsSucceed(notification: NSNotification) {
+        if let posts = notification.userInfo!["posts"] as? [Post] {
+            if (posts != self.posts) {
+                self.posts = posts
+                self.tableView.reloadData()
+            }
+            if let callByPullToRefresh = notification.userInfo!["callByPullToRefresh"] as? Bool {
+                if (callByPullToRefresh) {
+                    self.tableView.dg_stopLoading()
+                    self.tableView.allowsSelection = true
+                }
+            }
+        }
+    }
+    
+    func getPostsFailed(notification: NSNotification) {
+        let errorMessage = notification.userInfo!["error"] as? String
+        let alert = UIAlertController(title: "Error", message: errorMessage, preferredStyle: .Alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+        self.presentViewController(alert, animated: true, completion: nil)
+        
+        if let callByPullToRefresh = notification.userInfo!["callByPullToRefresh"] as? Bool {
+            if (callByPullToRefresh) {
+                self.tableView.dg_stopLoading()
+                self.tableView.allowsSelection = true
             }
         }
     }

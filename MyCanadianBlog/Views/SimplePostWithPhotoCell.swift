@@ -21,10 +21,13 @@ class SimplePostWithPhotoCell: UITableViewCell {
     @IBOutlet weak var postDate: UILabel!
     @IBOutlet weak var postContent: UILabel!
     @IBOutlet weak var lowerPulseView: MaterialPulseView!
+    @IBOutlet weak var indicator: UIActivityIndicatorView!
     override func awakeFromNib() {
         super.awakeFromNib()
         
         preparePulseView()
+        self.indicator.hidesWhenStopped = true
+        self.indicator.startAnimating()
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
@@ -52,6 +55,7 @@ class SimplePostWithPhotoCell: UITableViewCell {
             Alamofire.request(.GET, (self.post!.featured_image?.URLString)!)
                 .responseImage { response in
                     if let image = response.result.value {
+                        self.indicator.stopAnimating()
                         self.pulseView.image = image.alpha(Constants.mainAlpha)
                     }
             }
